@@ -1,0 +1,16 @@
+<server description="Sample Liberty server">
+    <name>systemServer</name>
+    <featureManager>
+        <feature>jsonb-3.0</feature>
+        <feature>cdi-4.0</feature>
+        <feature>restfulWS-3.1</feature>
+    </featureManager>
+
+    <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
+                  id="defaultHttpEndpoint" host="*" />
+
+    <webApplication location="demo-microprofile-telemetry-system.war" contextRoot="/">
+        <!-- enable visibility to third party apis -->
+        <classloader apiTypeVisibility="+third-party"/>
+    </webApplication>
+</server>

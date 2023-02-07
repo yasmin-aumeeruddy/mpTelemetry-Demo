@@ -30,6 +30,7 @@ Traces are collected with automatic instrumentation. Manual instrumentation will
 * [InventoryResource Span creation](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryResource.java#L45-L47)
 * [InventoryResource end Span](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryResource.java#L55)
 
+
 * [InventoryManager class import](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryManager.java#L18)
 * [InventoryManager WithSpan annotation](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryManager.java#L47)
 * [InventoryManager WithSpan annotation](blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryManager.java#L58)

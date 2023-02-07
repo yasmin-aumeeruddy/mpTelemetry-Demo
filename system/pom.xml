@@ -34,15 +34,19 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-            <plugin>
-                <groupId>io.openliberty.tools</groupId>
-                <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.7.1</version>
-                <configuration>
-                    <installDirectory>/Users/yasmin/Documents/open-liberty/dev/build.image/wlp</installDirectory>
-                    <serverName>system</serverName>
-                </configuration>
-            </plugin>
+        <plugin>
+            <groupId>io.openliberty.tools</groupId>
+            <artifactId>liberty-maven-plugin</artifactId>
+            <version>3.3.4</version>
+            <configuration>
+                <runtimeArtifact>
+                <groupId>io.openliberty.beta</groupId>
+                <artifactId>openliberty-runtime</artifactId>
+                <version>LATEST</version>
+                <type>zip</type>
+                </runtimeArtifact>
+            </configuration>
+        </plugin>
             <!-- Plugin to package opentelemetry java agent -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

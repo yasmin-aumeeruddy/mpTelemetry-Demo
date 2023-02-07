@@ -1,3 +1,5 @@
+# Java Agent
+
 Clone the repo 
 
 Navigate to the system directory and run Maven with the `package` goal. This will copy the OpenTelemetry Java Agent in to your server config: 
@@ -17,20 +19,30 @@ Navigate to the system endpoint:
 
 `localhost:9080/system/properties`
 
+# Automatic Instrumentation
+
 In a spearate terminal, navigate to the inventory directory and start the server
 
 `cd inventory`
 
 `mvn liberty:run`
 
-Traces are collected with automatic instrumentation. Manual instrumentation will be enabled if you uncomment the following: 
+Traces are collected with automatic instrumentation.
+
+Navigate to the inventory endpoint: 
+
+`localhost:9081/inventory/systems/localhost`
+
+You should see the automatically created spans in the exporter endpoint.
+# Manual Instrumentation
+
+Manual instrumentation will be enabled if you uncomment the following: 
 
 * [InventoryResource class imports](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryResource.java#L16-L18)
 * [InventoryResource Tracer injection](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryResource.java#L38-L39)
 * [InventoryResource Span creation](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryResource.java#L45-L47)
 * [InventoryResource end Span](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryResource.java#L55)
-
-
+---
 * [InventoryManager class import](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryManager.java#L18)
 * [InventoryManager WithSpan annotation](/blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryManager.java#L47)
 * [InventoryManager WithSpan annotation](blob/main/inventory/src/main/java/io/openliberty/demo/inventory/InventoryManager.java#L58)
@@ -39,4 +51,4 @@ Navigate to the inventory endpoint:
 
 `localhost:9081/inventory/systems/localhost`
 
-You should see the spans in the exporter endpoint.
+You should see the manually created spans in the exporter endpoint.

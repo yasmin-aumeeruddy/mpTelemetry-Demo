@@ -65,10 +65,14 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.3.4</version>
                 <configuration>
-                    <installDirectory>/Users/yasmin/Documents/open-liberty/dev/build.image/wlp</installDirectory>
-                    <serverName>inventory</serverName>
+                    <runtimeArtifact>
+                    <groupId>io.openliberty.beta</groupId>
+                    <artifactId>openliberty-runtime</artifactId>
+                    <version>LATEST</version>
+                    <type>zip</type>
+                    </runtimeArtifact>
                 </configuration>
             </plugin>
         </plugins>

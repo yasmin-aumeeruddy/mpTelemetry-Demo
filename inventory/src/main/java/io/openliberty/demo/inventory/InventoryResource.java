@@ -13,9 +13,9 @@ package io.openliberty.demo.inventory;
 
 import java.util.Properties;
 
-import io.opentelemetry.api.trace.Tracer;
-import io.opentelemetry.api.trace.Span;
-import io.opentelemetry.context.Scope;
+//import io.opentelemetry.api.trace.Tracer;
+//import io.opentelemetry.api.trace.Span;
+//import io.opentelemetry.context.Scope;
 
 import io.openliberty.demo.inventory.model.InventoryList;
 import jakarta.enterprise.context.RequestScoped;
@@ -35,25 +35,24 @@ public class InventoryResource {
 
     @Inject InventoryManager manager;
 
-    @Inject
-    Tracer tracer;
+    //@Inject
+    //Tracer tracer;
 
     @GET
     @Path("/{hostname}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPropertiesForHost(@PathParam("hostname") String hostname) {
-        Span getPropertiesSpan = tracer.spanBuilder("getProperties").startSpan();
-        Scope scope = getPropertiesSpan.makeCurrent();
-        getPropertiesSpan.addEvent("Getting properties");
+        //Span getPropertiesSpan = tracer.spanBuilder("getProperties").startSpan();
+        //Scope scope = getPropertiesSpan.makeCurrent();
+        //getPropertiesSpan.addEvent("Getting properties");
         Properties props = manager.get(hostname);
         if (props == null) {
-            getPropertiesSpan.addEvent("Properties not found");
             return Response.status(Response.Status.NOT_FOUND)
                            .entity("{ \"error\" : \"Unknown hostname or the system "
                            + "service may not be running on " + hostname + "\" }")
                            .build();
         }
-        getPropertiesSpan.end();
+        //getPropertiesSpan.end();
         manager.add(hostname, props);
         return Response.ok(props).build();
     }

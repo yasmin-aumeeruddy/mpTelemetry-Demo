@@ -15,9 +15,7 @@ package io.openliberty.demo.inventory;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import io.opentelemetry.api.trace.Tracer;
-import io.opentelemetry.api.trace.Span;
-import io.opentelemetry.instrumentation.annotations.WithSpan;
+//import io.opentelemetry.instrumentation.annotations.WithSpan;
 
 import io.openliberty.demo.inventory.client.SystemClient;
 import io.openliberty.demo.inventory.model.InventoryList;
@@ -37,9 +35,6 @@ public class InventoryManager {
     @ConfigProperty(name = "system.http.port")
     int SYSTEM_PORT;
 
-    @Inject
-    Tracer tracer;
-
     private List<SystemData> systems = Collections.synchronizedList(new ArrayList<>());
     private SystemClient systemClient = new SystemClient();
     
@@ -49,20 +44,18 @@ public class InventoryManager {
         return properties;
     }
 
+    //@WithSpan
     public void add(String hostname, Properties systemProps) {
-        Span addPropertiesSpan = tracer.spanBuilder("addProperties").startSpan();
         Properties props = new Properties();
         props.setProperty("os.name", systemProps.getProperty("os.name"));
         props.setProperty("user.name", systemProps.getProperty("user.name"));
         SystemData system = new SystemData(hostname, props);
         if (!systems.contains(system)) {
-            addPropertiesSpan.addEvent("Adding host to inventory");
             systems.add(system);
         }
-        addPropertiesSpan.end();
     }
 
-    @WithSpan
+    //@WithSpan
     public InventoryList list() {
         return new InventoryList(systems);
     }

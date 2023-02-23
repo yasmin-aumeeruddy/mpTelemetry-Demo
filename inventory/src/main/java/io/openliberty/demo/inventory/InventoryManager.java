@@ -15,7 +15,8 @@ package io.openliberty.demo.inventory;
 import java.util.ArrayList;
 import java.util.Properties;
 
-//import io.opentelemetry.instrumentation.annotations.WithSpan;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
+import io.opentelemetry.instrumentation.annotations.SpanAttribute;
 
 import io.openliberty.demo.inventory.client.SystemClient;
 import io.openliberty.demo.inventory.model.InventoryList;
@@ -44,8 +45,8 @@ public class InventoryManager {
         return properties;
     }
 
-    //@WithSpan
-    public void add(String hostname, Properties systemProps) {
+    @WithSpan
+    public void add(@SpanAttribute(value = "hostname") String hostname, Properties systemProps) {
         Properties props = new Properties();
         props.setProperty("os.name", systemProps.getProperty("os.name"));
         props.setProperty("user.name", systemProps.getProperty("user.name"));
@@ -55,7 +56,7 @@ public class InventoryManager {
         }
     }
 
-    //@WithSpan
+    @WithSpan("list")
     public InventoryList list() {
         return new InventoryList(systems);
     }

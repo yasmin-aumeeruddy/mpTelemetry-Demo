@@ -34,46 +34,20 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-        <plugin>
-            <groupId>io.openliberty.tools</groupId>
-            <artifactId>liberty-maven-plugin</artifactId>
-            <version>3.3.4</version>
-            <configuration>
-                <runtimeArtifact>
-                <groupId>io.openliberty.beta</groupId>
-                <artifactId>openliberty-runtime</artifactId>
-                <version>LATEST</version>
-                <type>zip</type>
-                </runtimeArtifact>
-            </configuration>
-        </plugin>
-            <!-- Plugin to package opentelemetry java agent -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.3.4</version>
                 <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>io.opentelemetry.javaagent</groupId>
-                            <artifactId>opentelemetry-javaagent</artifactId>
-                            <version>1.19.0</version>
-                            <type>jar</type>
-                            <outputDirectory>src/main/liberty/config</outputDirectory>
-                            <destFileName>opentelemetry-javaagent.jar</destFileName>
-                        </artifactItem>
-                    </artifactItems>
+                    <runtimeArtifact>
+                    <groupId>io.openliberty.beta</groupId>
+                    <artifactId>openliberty-runtime</artifactId>
+                    <version>LATEST</version>
+                    <type>zip</type>
+                    </runtimeArtifact>
                 </configuration>
             </plugin>
+            <!-- Plugin to package opentelemetry java agent -->
         </plugins>
     </build>
 </project>

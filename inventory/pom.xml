@@ -45,11 +45,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <artifactId>opentelemetry-instrumentation-annotations</artifactId>
             <version>1.19.0-alpha</version>
         </dependency>
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-api</artifactId>
-            <version>1.19.0</version>
-        </dependency>
     </dependencies>
 
     <build>

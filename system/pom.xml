@@ -47,7 +47,6 @@
                     </runtimeArtifact>
                 </configuration>
             </plugin>
-            <!-- Plugin to package opentelemetry java agent -->
         </plugins>
     </build>
 </project>

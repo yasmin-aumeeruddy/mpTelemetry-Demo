@@ -38,11 +38,14 @@ public class InventoryResource {
     @Inject
     Tracer tracer;
 
+    @Inject
+    Span getPropertiesSpan;
+
     @GET
     @Path("/{hostname}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPropertiesForHost(@PathParam("hostname") String hostname) {
-        Span getPropertiesSpan = tracer.spanBuilder("GettingProperties").startSpan();
+        getPropertiesSpan = tracer.spanBuilder("GettingProperties").startSpan();
         Properties props = manager.get(hostname);
         try(Scope scope = getPropertiesSpan.makeCurrent()){
                 if (props == null) {

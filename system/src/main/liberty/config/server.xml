@@ -10,5 +10,7 @@
     <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
                   id="defaultHttpEndpoint" host="*" />
 
-    <webApplication location="demo-microprofile-telemetry-system.war" contextRoot="/"></webApplication>
+    <webApplication location="demo-microprofile-telemetry-system.war" contextRoot="/">
+        <classloader apiTypeVisibility="+third-party"/>
+    </webApplication>
 </server>

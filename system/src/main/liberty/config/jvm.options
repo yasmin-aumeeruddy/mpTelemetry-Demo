@@ -1,0 +1,4 @@
+-javaagent:opentelemetry-javaagent.jar
+-Dotel.service.name=system-agent
+-Dotel.traces.exporter=jaeger
+-Dotel.instrumentation.opentelemetry-api.enabled=false

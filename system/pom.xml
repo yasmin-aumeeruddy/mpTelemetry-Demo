@@ -24,6 +24,16 @@
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>9.1.0</version>
             <scope>provided</scope>
+        </dependency>        
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-api</artifactId>
+            <version>1.19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-instrumentation-annotations</artifactId>
+            <version>1.19.0-alpha</version>
         </dependency>
     </dependencies>
     <build>
@@ -40,13 +50,40 @@
                 <version>3.3.4</version>
                 <configuration>
                     <runtimeArtifact>
-                    <groupId>io.openliberty.beta</groupId>
+                    <groupId>io.openliberty</groupId>
                     <artifactId>openliberty-runtime</artifactId>
                     <version>LATEST</version>
                     <type>zip</type>
                     </runtimeArtifact>
                 </configuration>
             </plugin>
+                        <!-- Plugin to package opentelemetry java agent -->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <version>3.3.0</version>
+    <executions>
+        <execution>
+            <id>copy</id>
+            <phase>package</phase>
+            <goals>
+                <goal>copy</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <artifactItems>
+            <artifactItem>
+                <groupId>io.opentelemetry.javaagent</groupId>
+                <artifactId>opentelemetry-javaagent</artifactId>
+                <version>1.19.0</version>
+                <type>jar</type>
+                <outputDirectory>src/main/liberty/config</outputDirectory>
+                <destFileName>opentelemetry-javaagent.jar</destFileName>
+            </artifactItem>
+        </artifactItems>
+    </configuration>
+</plugin>
         </plugins>
     </build>
 </project>

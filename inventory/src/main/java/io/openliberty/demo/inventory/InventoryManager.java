@@ -29,7 +29,6 @@ import java.util.Collections;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 @ApplicationScoped
-
 public class InventoryManager {
 
     @Inject
@@ -67,4 +66,3 @@ public class InventoryManager {
         return propertiesClearedCount;
     }
 }
-

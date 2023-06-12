@@ -3,6 +3,7 @@
     <featureManager>
         <feature>jsonb-3.0</feature>
         <feature>mpTelemetry-1.0</feature>
+
     </featureManager>
 
     <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"

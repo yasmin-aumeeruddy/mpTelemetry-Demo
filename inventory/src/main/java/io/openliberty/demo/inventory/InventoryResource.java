@@ -45,7 +45,7 @@ public class InventoryResource {
     @Path("/{hostname}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPropertiesForHost(@PathParam("hostname") String hostname) {
-        getPropertiesSpan = tracer.spanBuilder("GettingProperties").startSpan();
+        getPropertiesSpan = tracer.spanBuilder("GettingPropertiesForHost").startSpan();
         Properties props = manager.get(hostname);
         try(Scope scope = getPropertiesSpan.makeCurrent()){
                 if (props == null) {

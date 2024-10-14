@@ -26,24 +26,20 @@ import jakarta.ws.rs.core.Response;
 import java.util.Random;
 import io.opentelemetry.instrumentation.annotations.WithSpan;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @RequestScoped
 @Path("/properties")
 public class SystemResource {
 
-    private Random random = new Random();
-    
+    private static final Logger julLogger = Logger.getLogger("jul-logger");
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @WithSpan()
     public Response getProperties() throws InterruptedException {
-        this.sleep();
+        julLogger.log(Level.INFO, "Getting system properties");
         return Response.ok(System.getProperties())
             .build();
-    }
-
-    @WithSpan()
-    private void sleep() throws InterruptedException {
-        int duration = random.nextInt(1000);
-        Thread.sleep(duration);
     }
 }

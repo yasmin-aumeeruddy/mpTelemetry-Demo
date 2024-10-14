@@ -1,3 +1,0 @@
--javaagent:opentelemetry-javaagent.jar
--Dotel.service.name=inventory-agent
--Dotel.traces.exporter=jaeger

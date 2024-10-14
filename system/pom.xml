@@ -48,14 +48,6 @@
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>3.3.4</version>
-                <configuration>
-                    <runtimeArtifact>
-                    <groupId>io.openliberty</groupId>
-                    <artifactId>openliberty-runtime</artifactId>
-                    <version>LATEST</version>
-                    <type>zip</type>
-                    </runtimeArtifact>
-                </configuration>
             </plugin>
                         <!-- Plugin to package opentelemetry java agent -->
 <plugin>
@@ -71,18 +63,6 @@
             </goals>
         </execution>
     </executions>
-    <configuration>
-        <artifactItems>
-            <artifactItem>
-                <groupId>io.opentelemetry.javaagent</groupId>
-                <artifactId>opentelemetry-javaagent</artifactId>
-                <version>1.19.0</version>
-                <type>jar</type>
-                <outputDirectory>src/main/liberty/config</outputDirectory>
-                <destFileName>opentelemetry-javaagent.jar</destFileName>
-            </artifactItem>
-        </artifactItems>
-    </configuration>
 </plugin>
         </plugins>
     </build>

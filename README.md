@@ -1,4 +1,19 @@
 Clone the repo 
+
+# Running the backend exporters
+See the [docker-otel-lgtm](https://github.com/grafana/docker-otel-lgtm) repository and clone the repo:
+
+```
+git clone https://github.com/grafana/docker-otel-lgtm.git \
+cd docker-otel-lgtm/docker
+```
+Build and run the image containing all services required for gathering traces, metrics and logs: 
+
+```
+podman build . -t grafana/otel-lgtm \
+podman run -p 3000:3000 -p 4317:4317 -p 4318:4318 --rm -ti localhost/grafana/otel-lgtm
+```
+
 # Automatic 
 Navigate to the system directory and start the server
 
@@ -24,20 +39,6 @@ Navigate to the inventory endpoint:
 `localhost:9081/inventory/systems/localhost`
 
 You should see the manually created spans in the exporter endpoint.
-
-# Running the backend exporters
-See the [docker-otel-lgtm](https://github.com/grafana/docker-otel-lgtm) repository and clone the repo:
-
-```
-git clone https://github.com/grafana/docker-otel-lgtm.git \
-cd docker-otel-lgtm/docker
-```
-Build and run the image containing all services required for gathering traces, metrics and logs: 
-
-```
-podman build . -t grafana/otel-lgtm \
-podman run -p 3000:3000 -p 4317:4317 -p 4318:4318 --rm -ti localhost/grafana/otel-lgtm
-```
 
 # Viewing the telemetry data
 

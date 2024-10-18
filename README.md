@@ -22,7 +22,7 @@ Navigate to the system directory and start the server
 
 Navigate to the system endpoint:
 
-`localhost:9080/system/properties`
+[http://localhost:9080/system/properties](http://localhost:9080/system/properties)
 
 # Manual 
 
@@ -36,7 +36,7 @@ Traces are collected with automatic instrumentation.
 
 Navigate to the inventory endpoint: 
 
-`localhost:9081/inventory/systems/localhost`
+[http://localhost:9081/inventory/systems/localhost](http://localhost:9081/inventory/systems/localhost)
 
 You should see the manually created spans in the exporter endpoint.
 
@@ -53,8 +53,8 @@ http://localhost:3000/d/b91844d7-121e-4d0a-93b8-a9c1a05703b3/jvm-overview-opente
 Note: These take longer to export than spans.
 
 HTTP Metrics: 
-http://localhost:3000/explore/metrics/trail?metric=http_server_request_duration_seconds_bucket&from=now-5m&to=now&var-ds=prometheus&var-filters=&refresh=&actionView=overview&layout=grid&var-groupby=$__all
-
+[http://localhost:3000/explore/metrics/trail?metric=http_server_request_duration_seconds_bucket&from=now-5m&to=now&var-ds=prometheus&var-filters=&refresh=&actionView=overview&layout=grid&var-groupby=$__all
+](http://localhost:3000/d/f543a537-cb96-470d-a349-660ad1513136/red-metrics-classic-histogram?orgId=1)
 
 Logs: 
 http://localhost:3000/explore?schemaVersion=1&panes=%7B%22puw%22:%7B%22datasource%22:%22loki%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22%22,%22queryType%22:%22range%22,%22datasource%22:%7B%22type%22:%22loki%22,%22uid%22:%22loki%22%7D%7D%5D,%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D%7D%7D&orgId=1
